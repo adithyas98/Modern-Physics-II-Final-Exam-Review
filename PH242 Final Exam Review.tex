@@ -1,0 +1,517 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% writeLaTeX Example: A quick guide to LaTeX
+%
+% Source: Dave Richeson (divisbyzero.com), Dickinson College
+% 
+% A one-size-fits-all LaTeX cheat sheet. Kept to two pages, so it 
+% can be printed (double-sided) on one piece of paper
+% 
+% Feel free to distribute this example, but please keep the referral
+% to divisbyzero.com
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{tensor}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+% -----------------------------------------------------------------------
+
+\title{Modern Physics II Final Exam Review}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{Modern Physics II Final Exam Review}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+\section{Basic Equations}
+These are just basic equations you should know. The below list is for particles
+\begin{itemize}
+  \item $\lambda=\frac{h}{p}$
+  \item $E=h\nu$
+  \item $k=\frac{2\pi}{\lambda}=\frac{p}{\hbar}$
+  \item $2\pi\nu=\frac{E}{\hbar}$
+\end{itemize}
+Here are similar equations for photons:
+\begin{itemize}
+    \item $\lambda\nu=c$
+    \item $ E=h\nu$
+    \item $ p=\frac{h}{\lambda}$
+    \item  $ E=cp$
+\end{itemize}
+
+\section{Wave Functions}
+Wave functions are things that describe quantum particles. They follow the sames rules as actual waves in that they interfere with other waves and other things. The weird thing is that they also sometimes act like particles, since they actually are particles. 
+\subsection{What is $\Psi(x,t)$}
+This essentially describes the motion of a particle with regard to space and time. But, unlike other equations that do similar things, these wave functions only give Probability Amplitudes, which are just probabilities of where the particle might be. We work in probabilities because of the uncertainty principle. The way to actually get information out of these wave functions is by using expectation values or averages.
+\subsection{Expectation Values}
+As mentioned above, we can use expectation values to actually find out what particles are doing. We do this through the use of operators, since in QM we cannot directly find the position, momentum, energy, or anything else without violating the uncertainty principle. To find the expectation value, simply place the operator for that value in between the wave function and its conjugate(Discussed in the Complex numbers section) and integrate.
+
+\begin{equation*}
+    \int_{\infty}^{\infty}\Psi(x,t)^{\star} \hat{x} \Psi(x,t) dx
+\end{equation*}
+Remember, taking the integral of an odd function, $f(-x)=-f(x)$, from $-\infty$ to $\infty$ is always going to be $0$.  This one sentence will save you so much time lol!
+Where the $\hat{x}$ is the operator that will give back the expectation value for $x$. 
+\subsection{List of Operators for 1D}
+These are the operators for One-dimensional problems:
+\begin{itemize}
+    \item $\hat{p}=-i\hbar \frac{\partial}{\partial x}$
+    \item $\hat{p}^2=-i\hbar \frac{\partial^2}{\partial x^2}$
+    \item $\hat{x}=x$
+    \item $\hat{x}^2=x^2$
+    \item $\hat{H}=i\hbar \frac{\partial}{\partial t}$
+\end{itemize}
+Just to throw these in, this is how you find $\Delta x$ and $\Delta p$:
+\begin{itemize}
+    \item $\Delta x=\sqrt{\Bar{x^2}-(\Bar{x})^2}$
+    \item $\Delta p=\sqrt{\Bar{p^2}-(\Bar{p})^2}$
+\end{itemize}
+\subsection{Properties of Wave Functions}
+\begin{itemize}
+    \item Must be Normalized:
+    \begin{itemize}
+        \item $\int_{\infty}^{\infty}|\Psi(x,t)|=\int_{\infty}^{\infty}\Psi(x,t)^{\star}\Psi(x,t)=1$ 
+    \end{itemize}
+    \item as $x \xrightarrow{} \pm \infty$, $\Psi=0$
+    \item Expectation values are Average values
+\end{itemize}
+\subsection{Conditions for Solutions}
+\begin{itemize}
+    \item Must be consistent with $\lambda=\frac{h}{p}$ and $\nu=\frac{E}{h}$
+    \item Must be consistent with $E=\frac{p^2}{2m}+V$
+    \item Must be linearly related to $\Psi$
+    \item If $V$ is constant, there is no force
+    \item Should have pure wave solutions
+\end{itemize}
+\section{Schrodinger Equation}
+Here is the big equation from this class:
+\begin{equation*}
+    -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi(x,t)}{\partial x^2} +V(x,t)\Psi(x,t)=i\hbar\frac{\partial \Psi(x,t)}{\partial t}
+\end{equation*}
+This is the time dependant SE, it is possible to find the time dependent SE, by using a separation of variables technique. If we just let $\Psi=\psi(x)\phi(t)$. We can separate it by doing some algebra and setting each side equal to a constant. We then get that the time independent SE is:
+\begin{equation*}
+    -\frac{\hbar^2}{2m}\frac{\partial^2 \psi(x)}{\partial x^2} +V(x,t)\psi(x)=E\psi(x)
+\end{equation*}
+With this equation, we will be able to solve a number of different cases.
+\section{Complex Number Review}
+For complex numbers, when you take the conjugate, you simply negate all of the $i$s in the equation. For example, let $z=\cos\theta+i\sin\theta$
+\begin{align*}
+    |z|&=z^{\star}z\\
+    &=(\cos\theta+i\sin\theta)(\cos\theta-i\sin\theta)\\
+    &=\cos^{2}\theta\sin^{2}\theta\\
+    &=1
+\end{align*}
+Here are some Euler Identities
+\begin{itemize}
+    \item $e^{i\theta}=\cos\theta+i\sin\theta$
+    \item $e^{-i\theta}=\cos\theta-i\sin\theta$
+    \item $\sin\theta=\frac{1}{2i}(e^{i\theta}-e^{-i\theta})$
+    \item $\cos\theta=\frac{1}{2}(e^{i\theta}+e^{-i\theta})$
+\end{itemize}
+\section{Properties of Eigenfunctions}
+These are basically functions, that when acted on by an operator, give back an eigenvalue times itself. Like so:
+\begin{equation*}
+    \hat{A}\psi=a\psi
+\end{equation*}
+Where $\hat{A}$ is the operator for the eigenfunction $\psi$ and $a$ is the eigenvalue of the eigenfunction.
+
+\section{One-Dimensional Potential Problems}
+In this first section, there are a few types of problems that are modeled using the SE. These include the Step potential, barrier potential, infinite square well, and free particle. All of these follow the same steps, listed below:
+
+\begin{itemize}
+    \item Separate the possible positions based on the conditions they stipulate
+    \item Apply these conditions to the SE and obtain a solution wave function. You will most likely have two solutions, maybe more, just remember to think of all of them and add them together. 
+    \item Create a piece-wise function for $\psi$ based on the conditions of the problem and put different (A,B,C,D,...)constants in front of each of these solutions.
+    \item Check for consistency:
+    \begin{itemize}
+        \item For example make sure a particle doesn't suddenly come from the other side after passing a barrier. This can be checked by looking at the sign of the exponent. For example $e^{-ikx}$ is travelling to the left whereas $e^{ikx}$ is travelling to the right. Also remember,that any wave equations that involve $\sin\x$,$\cosx$, $e^{kx}$, and $e^{-kx}$ are not travelling waves.
+        \item Make sure none of the wave functions blow up at $\pm \infty$. Set their constant equal to $0$.
+    \end{itemize}
+    \item Match the equations at the boundaries they share. This involves setting equal the $\frac{\partial\psi(x)}{\partial x}$ and $\psi(x)$ respectively at the proper $x$ value. 
+    \item Solve for all the constants in terms of one constant.
+    \item Normalize the function to find the value for the constant.
+    
+\end{itemize}
+\subsection{Reflection and Transmission Coefficients}
+These coefficients are used to calculate the probability of a particle reflecting off a boundary or tunnelling through it respectively. Remember since these wave functions give probability amplitudes and not the actual positions of the particles, we need to use a new concept called the Probability flux. This is a measure of the change in probability per change in position and time. So through some simplification of the equations, we get the following equation for Transmission:
+
+\begin{equation*}
+    T=\frac{k_2}{k_1}\frac{|\psi_{trans}|^2}{|\psi_{inc}|^2}
+\end{equation*}
+
+The Equation for Reflections is as follows:
+\begin{equation*}
+    R=\frac{|\psi_{}|^2}{|\psi_{inc}|^2}
+\end{equation*}
+\section{Simple Harmonic Oscillator}
+This is another One-dimensional problem that has the parameters $V(x)=\frac{1}{2}cx^2$, where $c=4\pi^2m\nu^2$. When we plug this into the SE and after a lot of simplification, we get $\frac{\partial^2\psi}{\partial u^2}+(\frac{\beta}{\alpha}-u^2)\psi=0$. Where $\alpha=\frac{2\pi m \nu}{\hbar}$ and $\beta=\frac{2mE}{\hbar^2}$Since this is no real easy way of solving this differential equation, we use an asymptotic assumption, to get rid of the $\frac{\beta}{\alpha}$. We then create something called the Hermite polynomials, discussed in a different section, in order to have the wave function accurately explain stuff when $u>>\frac{\beta}{\alpha}$ isn't the case. With the assumption, we get the following equation:
+
+\begin{equation*}
+    \psi=e^{-\frac{1}{2}u^2}H(u)
+\end{equation*}
+
+\section{Power Series}
+Power series is a way to solve differential equations when the solution isn't intuitive like it has been in the past. 
+\begin{itemize}
+    \item Take a differential equation and set the function, the one in the differential equation, equal to the sum below. 
+    \begin{equation*}
+    \psi=\sum_{l=0}^\infty  a_lx^l  
+    \end{equation*}{}
+    Where $\psi$ is the function in the differential equation
+    \item Now, take the derivatives as necessary
+    \item Plug in the derivatives into the differential equation.
+    \item Now you want to factor out the $x$, so change the $l$ as necessary in order to do so. This will involve some very weird tricks.
+    \item Now factor out the $x$ and set the other portion equal to $0$
+    \item Set up recurrence relation
+    \item Solve for odd and even coefficients
+    \item Normalize to find the $a_0$ and $a_1$ coefficient based on the normalization rules
+    \item Combine the odd and even series and guess the equation
+\end{itemize}
+\section{Hermite Polynomials}
+The Hermite polynomials, as mentioned in the Simple Harmonic Oscillator section, is used to let the wave function for SHO ``snap back to reality". This is done by using the power series, but rigging it in a way where the series stops. In order to do this you first plug in the wave equation  $\psi=e^{-\frac{1}{2}u^2}H(u)$, into 
+\begin{equation*}
+    \frac{\partial^2\psi}{\partial u^2}+(\frac{\beta}{\alpha}-u^2)\psi=0
+\end{equation*}
+After some simplification, you find that all of the parts of the equation that involve $u$ ``magically" disappear! You end up with 
+\begin{equation*}
+    \frac{\partial^2 H}{\partial u^2}-2u\frac{\partial H}{\partial u}+ (\frac{\beta}{\alpha}-1)H=0
+\end{equation*}
+When you use the power series, you end up with this recurrence relation:
+\begin{equation*}
+    a_{l+2}=\frac{-(\frac{\beta}{\alpha}-1-2l)}{(l+1)(l+2)}a_l
+\end{equation*}{}But, we need to stop this from growing too fast (That was the entire point of all of this). We do this by creating a new variable $n$ and let $n=l$, but this is only for stopping conditions. First let's simplify the $\frac{\beta}{\alpha}$
+\begin{equation*}
+    \frac{\beta}{\alpha}=\frac{\frac{2mE}{\hbar^2}}{\frac{2\pi m \nu}{\hbar}}=\frac{2E}{h\nu}
+\end{equation*}{}
+Now let us set up this condition and solve for $E_n$
+\begin{align*}
+    -(\frac{\beta}{\alpha}-1-2l)&=0\\
+    E_n&=(n+\frac{1}{2})h\nu
+\end{align*}
+Keep this equation in mind!!
+\begin{equation*}
+    E_n&=(n+\frac{1}{2})h\nu
+\end{equation*}{}
+Now we need to change the recurrence relation to reflect this change. In order to do so, we simply set $\frac{\beta}{\alpha}=2n+1$. Now if we plug this into the equation, we get
+\begin{equation*}
+    a_{l+2}=\frac{2l-2n}{(l+1)(l+2)}a_l
+\end{equation*}{}
+Now, we need to normalize this. In order to do so, simply find the $u^n$ term and set the coefficient equal to $2^n$, then solve for $a_0$ or $a_1$. Once you do this, then you need to actually normalize the entire wave equation with an integral. 
+
+\section{Schrodinger Equation in 3D}
+We need to create a new way of writing the SE, since now we are going away from One-dimension and moving towards three. First thing we need to change is how we interpret mass. Since we will usually be dealing with multiple particles, we need to use something called the reduced mass, or $\mu=\frac{m_em_p}{m_e+m_p}$. This, we find out, can actually straight up replace the $m$ in the equation with a $\mu$. The new SE looks like this
+
+\begin{equation*}
+    -\frac{\hbar^2}{2\mu}\Vec{\nabla}\psi(\Vec{r})+V(\Vec{r})\psi(\Vec{r})=E\psi(\Vec{r})
+\end{equation*}{}
+
+The next thing is to make it easier for us to deal with the SE. This can be done by changing the coordinate system from a Cartesian coordinate system to spherical. 
+
+This is actually a really hard process but is don using the following steps.
+\begin{itemize}
+    \item Use these transformations
+    \begin{itemize}
+        \item $r=\sqrt{x^2+y^2+z^2}$
+        \item $\theta=\cos^{-1}(\frac{z}{r})$
+        \item $\tan^{-1}(\frac{y}{x}$
+    \end{itemize}{}
+    \item Then convert the ``Dorito" operator (Laplacian: $\Vec{\nabla}$). This involves a lot of multi-variable chain rules.
+    \item Then re-write the new SE
+\end{itemize}{}
+\subsection{Operators}
+\begin{itemize}
+    \item $\hat{H}=\frac{\hat{P_x}}{2m}+V(x)$
+    \item  $\hat{P_x}=-i\hbar\frac{\partial}{\partial x}$
+    \item $\hat{\Vec{P}}=-i\hbar\Vec{\nabla}$
+    \item $\hat{\Vec{P^2}}=-\hbar\Vec{\nabla}$
+    \item  $\vec{\nabla}=\frac{\partial}{\partial x}+\frac{\partial}{\partial y}+\frac{\partial}{\partial z}$
+    \item $|L_z|=\sqrt{l(l+1)}\hbar$
+    \item $L_z=m_l\hbar$
+\end{itemize}{}
+\subsection{Quantum Numbers}
+Quantum numbers are numbers that are used to describe the state of an electron in an atom. They consist of the energy level $n$, momentum $l$, magnetic quantum number $m_l$, spin $S$, and magnetic spin number $m_s$.
+
+\begin{itemize}
+    \item $n=0,1,2,3,4,...$
+    \item $l=0,1,2,3,...,n-1$
+    \item $m_l=0\pm 1, \pm 2, ..., \pm l$
+    \item $S=\frac{1}{2}$
+    \item $m_s=-\frac{1}{2},\frac{1}{2} $
+\end{itemize}{}
+
+\subsection{Solving the SE in 3D}
+The basic process of solving the SE in 3D is to separate variables, since it is too difficult to handle without doing so. Then you can solve each of the components the same way you would for one-dimensional problems.
+\subsection{How to use the Wave Equations from the table}
+He won't have you derive wave equations, but he might give them to you and have you use them in a problem. Here are the steps to take in order to do this.
+
+\begin{itemize}
+    \item Pick the correct wave equation based on the Quantum numbers $n$, $l$, and $m_l$
+    \item You can take out the parts of the equation you don't need 
+    \item use it as you please.
+    
+\end{itemize}{}
+
+The radial probability can be found using $P_{nl}(r)$. Where 
+    \begin{equation*}
+        P_{nl}(r)=|R(r)|^2 4\pi r^2 dr
+    \end{equation*}{}
+    
+    
+    
+\section{Graphing Angular Momentum}
+Here is how you graph the angular Momentum of an electron.
+\begin{itemize}
+    \item Find $|L|=\sqrt{l(l+1)}\hbar$
+    \item Find $m_l=-l,...,+l$
+    \item Find $L_z=m_l \hbar$
+    \item Graph $L_z$ on the z axsis and have L as the Magnitude.
+\end{itemize}{}
+
+\section{Graphing Density Plots}
+These graphs basically tell you where an electron will be in relation to the nucleus. The steps on how to graph them is below:
+
+\begin{itemize}
+    \item Derive the Radial Probability function
+    \begin{equation*}
+        P_{nl}(r)=|R(r)|^2 4\pi r^2 dr
+    \end{equation*}{}
+    \item Normalize $P_{nl}(r)$
+    \begin{equation*}
+        \int_{\infty}^{\infty} P_{nl}(r) dr=1
+    \end{equation*}{}
+    \item Plot $P_{nl}(r)$ by using the radial component as a magnitude
+    \item Plot the $|\Theta|^2$ by charting what each $\theta$ goes to for $|\Theta|^2$
+    \item Superimpose the plots to make a 3D plot
+\end{itemize}{}
+
+\section{Spin}
+Spin is required to make the overall structure of the atom actually possible. This just makes things much more complicated. 
+\subsection{Dipole Moments}
+If we imagine an electron spinning around the nucleus, we find that there needs to be a magnetic dipole moment,$\vec{\mu}_l=g_l\mu_b\sqrt{l(l+1)}$. Then we get that $\vec{\mu_{l_z}=-g_s\mu_b\m_{l}}$
+
+
+\subsection{Stern-Gerlach Experiment}
+This is the experiment that proves that electrons have different spins. In this experiment we send hot atoms between a magnet with \textbf{non-uniform} magnetic field based on the position in the z-axis. When you do this, you find that two spots appear on a paper as a result of the deflection. This means that electrons have different dipole moments that are equal in magnitude, but opposite in sign. The value for which this works is $-\frac{1}{2}$ and $\frac{1}{2}$. The force of the magnetic field is given by 
+\begin{equation*}
+    F_z=\mu_{sz}\frac{\partial B_z}{\partial z}
+\end{equation*}{}
+Where $\mu_{sz}=-g_s\vec{\mu}_b m_s$ and $g_s=2$
+
+
+\subsection{Zeeman Effect}
+This explains how the introduction of a \textbf{uniform} magnetic field will cause splitting in the spectral emission lines and thus proves that there are two types of magnetic dipoles($\vec{\mu_l}$ and $\vec{\mu}_s$) because otherwise you would not get this type of splitting.
+
+
+\subsection{Spin-Orbit Interaction}
+This interaction is what actually splits the energy levels even more and allows more electrons to take positions in the same energy level, this is known as the Fine Structure. This is because electrons cannot have share the same quantum state with another electron,this will be discussed later.
+\begin{equation*}
+    \Delta E=\vec{\mu_s} \cdot \vec{B}
+\end{equation*}{}
+Here is what this interaction tells us:
+\begin{itemize}
+    \item The spin magnetic moment interacts with the internal magnetic field
+    \item We get energy splitting
+    \item We need a correction factor of $\frac{1}{2}$
+\end{itemize}{}
+\section{The SE with Spin}
+In order to incorperate the spin portion of the wave equation, we simply add that as another component, like so,
+
+\begin{equation*}
+    \Psi=\psi_{nlm_l}\chi_{sm_s}
+\end{equation*}
+Now we need to introduce another operator to act on the wave function to give us the eigenvalue of $s$ and $m_s$.The new operators are listed below:
+\begin{itemize}
+    \item $\hat{\Vec{S^2}} \Psi=s(s+1)\hbar^2 \Psi$
+    \item $\hat{\Vec{S_z}}\Psi=m_s\hbar \Psi$
+\end{itemize}{}
+So that means, that the wave function is an eigenstate of five different operators and gives back five quantum numbers, eigenvalues. But, notice that only the spin portion of the wave function will act on the spin operators $\hat{\vec{S^2}}$ and $\hat{S_z}$. Also, notice how this will double the degeneracy. Thus,$2n^2$ electrons can fit into $n$ energy levels.
+
+\section{Spin-Orbit interaction in the SE}
+
+In order to incorporate the Spin-orbit interaction into the SE, we would need to add new terms to the overall equation, that would make it almost impossible to derive exact solutions from. Instead, we can still use the eigenstates to find out what is happening in the atom. In order to do so, we take into account the spin-orbit interaction by taking 
+\begin{equation*}
+    \vec{S} \cdot \vec{L}= \hat{S_x}\hat{L_x}+\hat{S_y}\hat{L_y}+\hat{S_z}\hat{L_z}
+\end{equation*}{}
+
+Notice, how we know nothing about $\hat{S_x},\hat{L_x},\hat{S_y},$ and $ \hat{L_y}$. This makes knowing about the $m_s$ and $m_l$ not very helpful, thus we need to make a new quantum number that will allow us to take into account the spin-orbit interaction. We define a new quantum angular momentum $\vec{J}$. We define $\vec{J}$ like so
+
+\begin{equation*}
+\vec{J}=(\vec{S}+\vec{L}) 
+\end{equation*}{}
+
+We then get the following quantum numbers for $\vec{J}$.
+\begin{itemize}
+\item $\hat{\vec{J}}\Psi=j(j+1)\hbar^{2}\Psi$
+\item $\hat{J_{z}}\Psi=m_{j}\hbar\Psi$
+\item $m_{j}=-j,-j+1,...,j$
+\item $j=l+s$ TO add these , simply add and subtract the value for $s$. This should give you two different values for $j$. With this you can find the $m_j$ values.
+\end{itemize}
+\section{Transitions}
+Transitions are those things you learned in chemistry class where you add energy to an electron in an atom, it jumps to a higher energy level and then once it loses its energy it jumps back and releases a photon. There are actually rules for what types of jumps are possible to do they are listed below:
+\begin{itemize}
+    \item $\Delta l = \pm 1$
+    \item $\Delta j=\pm 1, 0$
+\end{itemize}{}
+This is because one photon is released at a time and photons have a total angular momentum of $j=1$. Also, a photon can only carry orbital angular momentum of $l=1$. This comes as a result of calculating the probability of a photon taking the magnetic dipole moment. We find, after tonnes of math, that the the dipole moment, which is related to the Radiation, is zero unless the above conditions are met. This has to do with making the $\psi$ equation even, otherwise the probability integral will be zero.
+\section{Atomic Physics}
+We need to adapt the SE to include more than 1 electron. In order to do this we add terms for every electron we want to model. There are some rules that this needs to follow.
+\subsection{Pauli Exclusion Principle}
+This basically says that two fermions cannot occupy the same state. Bozons do not obey this rule. This means that Bozons have to occupy anti-symmetric wave functions when they are in the same atom. However, Fermions can have symmetric wave functions.
+
+\subsection{Identical Particles}
+Since all electrons are the same, we need to find a way to take a superposition of all the posibilities that the electrons can be in! This is given by this matrix!
+\begin{equation*}
+    \psi_a=\frac{1}{\sqrt{N!}}
+    \begin{vmatrix}
+    \psi_1(1)&...&\psi_1(n)\\
+    \vdots&\ddots&\vdots\\
+    \psi_n(1)&...&\psi_n(n)\\
+    \end{vmatrix}
+\end{equation*}{}
+Where the subscripts represent different states and guess what!? They follow the same rules as the determinant from linear algebra! Let's goooo!
+
+
+\subsection{Hartree Method}
+This is a method of how to approximate the potential of every interaction on one electron. Here are the steps
+\begin{itemize}
+    \item Guess a form for the V(r) obeying the following rules: $V(r)=\frac{-ze^2}{4\pi \varepsilon_0 r}$ for when r tends to 0 and $V(r)=\frac{-e^2}{4\pi \varepsilon_0 r}$ as r tends to infinity.
+    \item Solve the single particle SE for the $V(r)$ and order the solutions by energy
+    \item Form the ground state of an atom by forming the $z$ lowest level. Remember 1 electron per state.
+    \item Calculate the charge distributions The charge distribution is given by
+    \begin{equation*}
+        =-e|\psi_1|^2-e|\psi_2|^2+...+(ze)
+    \end{equation*}{}
+    \item Use Gauss's' law on the charge distribution to calculate $V(r)$
+    \item go back to step 2 and repeat until you find $V(r)$ that doesn't change.
+\end{itemize}
+
+
+\subsection{Electron Configurations}
+Should know how to do this from Chemistry!
+\subsection{Ionization Energy}
+The amount of energy required to remove one mole of electrons from one mole of gaseous ions.Should know the trends from the Periodic Table and chemistry class.
+
+\subsection{LS Coupling}
+This is a method for coming up with the possible states for the electrons. The steps here are to add up the $\vec{L} and \vec{S}$ then enumerate the $\vec{J}$ values.But before you go on adding these vectors, remember that there is a specific way you need to add them. 
+
+
+The rule to add quantum vectors is to take the biggest value(from the sum), then add/subtract the smaller value.Then fill in the rest. For more than two quantum vectors, just take each value at a time and don't forget to add all the possibilities.
+
+Then you present it in the following way
+
+
+\subsection{Hund's Rule}
+These are the rules that basically say how things are filled.
+\begin{itemize}
+    \item States with higher $s^{\prime}$ 
+    \item States with higher $l^{\prime}$ are lower in energy
+    \item For fixed $l^{\prime}$ and $s^{\prime}$, state of $j^{\prime}$ are lower in energy
+\end{itemize}{}
+
+
+
+\begin{equation*}
+    \tensor*[^{(2s^{\prime}+1)}]{l^{\prime}}{_j}
+\end{equation*}{}
+
+
+
+
+
+
+
+~\\
+\hrule
+~\\
+Made by Adithya Shastry 2019\\
+Edited by TC Clifford
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{multicols}
+
+
+\end{document}
